@@ -1,0 +1,117 @@
+LX51 LINKER/LOCATER V4.66.97.0                                                          01/26/2023  23:51:55  PAGE 1
+
+
+LX51 LINKER/LOCATER V4.66.97.0, INVOKED BY:
+C:\SILICONLABS\SIMPLICITYSTUDIO\V5\EFM8\DEVELOPER\TOOLCHAINS\KEIL_8051\9.60\BIN\LX51.EXE ./src/ESD_LAB1.OBJ TO ESD-LAB1.
+>> OMF.CRBUILD REMOVEUNUSED PRINT (.\ESD-Lab1.m51) PAGEWIDTH (120) PAGELENGTH (65) CLASSES (ECODE (C:0X0-C:0X1FFE), HCON
+>> ST (C:0X0-C:0X1FFE), XDATA (X:0X0-X:0XFF), HDATA (X:0X0-X:0XFF))
+
+
+CPU MODE:     8051 MODE
+
+
+INPUT MODULES INCLUDED:
+  ./src/ESD_LAB1.OBJ (ESD_LAB1)
+         COMMENT TYPE 0: AX51 V3.15.3.0
+
+
+ACTIVE MEMORY CLASSES OF MODULE:  ESD-LAB1.OMF.CRBUILD (ESD_LAB1)
+
+BASE        START       END         USED      MEMORY CLASS
+==========================================================
+C:000000H   C:000000H   C:001FFEH             ECODE
+C:000000H   C:000000H   C:001FFEH             HCONST
+X:000000H   X:000000H   X:0000FFH             XDATA
+X:000000H   X:000000H   X:0000FFH             HDATA
+C:000000H   C:000000H   C:00FFFFH   00004CH   CODE
+I:000000H   I:000000H   I:00007FH   000008H   DATA
+
+
+MEMORY MAP OF MODULE:  ESD-LAB1.OMF.CRBUILD (ESD_LAB1)
+
+
+START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
+=========================================================================
+
+* * * * * * * * * * *   D A T A   M E M O R Y   * * * * * * * * * * * * *
+000000H   000007H   000008H   ---    AT..     DATA           "REG BANK 0"
+
+* * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
+000000H   00004BH   00004CH   ---    OFFS..   CODE           ?CO?ESD_LAB1?0
+
+
+
+PUBLIC SYMBOLS OF MODULE:  ESD-LAB1.OMF.CRBUILD (ESD_LAB1)
+
+
+      VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
+      =================================================
+      00000000H   NUMBER   ---       ?C?CODESEG
+      00000000H   NUMBER   ---       ?C?XDATASEG
+*SFR* 000000F0H   DATA     BYTE      B
+
+
+
+SYMBOL TABLE OF MODULE:  ESD-LAB1.OMF.CRBUILD (ESD_LAB1)
+
+      VALUE       REP       CLASS    TYPE      SYMBOL NAME
+      ====================================================
+      ---         MODULE    ---      ---       ESD_LAB1
+      000000F0H   SFRSYM    DATA     BYTE      B
+      01000042H   SYMBOL    CODE     NEAR LAB  DIV_END
+      0100004AH   SYMBOL    CODE     NEAR LAB  ENDLOOP
+      0100003BH   SYMBOL    CODE     NEAR LAB  LOOP
+      0100001FH   SYMBOL    CODE     NEAR LAB  NO_ERROR
+      01000035H   SYMBOL    CODE     NEAR LAB  NO_OVERFLOW
+
+LX51 LINKER/LOCATER V4.66.97.0                                                        01/26/2023  23:51:55  PAGE 2
+
+
+      01000000H   BLOCK     CODE     NEAR LAB  LVL=0
+      01000000H   LINE      CODE     ---       #4
+      01000003H   LINE      CODE     ---       #5
+      01000006H   LINE      CODE     ---       #8
+      01000008H   LINE      CODE     ---       #9
+      0100000AH   LINE      CODE     ---       #10
+      0100000DH   LINE      CODE     ---       #11
+      0100000FH   LINE      CODE     ---       #12
+      01000011H   LINE      CODE     ---       #13
+      01000013H   LINE      CODE     ---       #17
+      01000014H   LINE      CODE     ---       #20
+      01000016H   LINE      CODE     ---       #21
+      01000019H   LINE      CODE     ---       #22
+      0100001BH   LINE      CODE     ---       #23
+      0100001DH   LINE      CODE     ---       #24
+      0100001FH   LINE      CODE     ---       #28
+      01000020H   LINE      CODE     ---       #30
+      01000022H   LINE      CODE     ---       #33
+      01000023H   LINE      CODE     ---       #34
+      01000025H   LINE      CODE     ---       #35
+      01000026H   LINE      CODE     ---       #36
+      01000027H   LINE      CODE     ---       #37
+      01000028H   LINE      CODE     ---       #38
+      01000029H   LINE      CODE     ---       #39
+      0100002AH   LINE      CODE     ---       #40
+      0100002BH   LINE      CODE     ---       #41
+      0100002CH   LINE      CODE     ---       #42
+      0100002DH   LINE      CODE     ---       #46
+      0100002FH   LINE      CODE     ---       #47
+      01000031H   LINE      CODE     ---       #48
+      01000033H   LINE      CODE     ---       #49
+      01000035H   LINE      CODE     ---       #54
+      01000037H   LINE      CODE     ---       #57
+      01000039H   LINE      CODE     ---       #58
+      0100003BH   LINE      CODE     ---       #60
+      0100003CH   LINE      CODE     ---       #61
+      0100003DH   LINE      CODE     ---       #62
+      0100003FH   LINE      CODE     ---       #63
+      01000040H   LINE      CODE     ---       #64
+      01000042H   LINE      CODE     ---       #69
+      01000044H   LINE      CODE     ---       #72
+      01000046H   LINE      CODE     ---       #75
+      01000048H   LINE      CODE     ---       #76
+      0100004AH   LINE      CODE     ---       #80
+      ---         BLOCKEND  ---      ---       LVL=0
+
+Program Size: data=8.0 xdata=0 const=0 code=76
+LX51 RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

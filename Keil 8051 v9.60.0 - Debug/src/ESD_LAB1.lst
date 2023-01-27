@@ -1,0 +1,121 @@
+AX51 MACRO ASSEMBLER  ESD_LAB1                                                              01/26/23 23:51:49 PAGE     1
+
+
+MACRO ASSEMBLER AX51 V3.15.3.0
+OBJECT MODULE PLACED IN .\src\ESD_LAB1.OBJ
+ASSEMBLER INVOKED BY: C:\SiliconLabs\SimplicityStudio\v5\EFM8\developer\toolchains\keil_8051\9.60\BIN\AX51.exe C:\Users\
+                      suraj\SimplicityStudio\v5_workspace\ESD-Lab1\src\ESD_LAB1.asm ERRORPRINT SET(SMALL,SILABS_STARTUP=
+                      1) DEBUG MACRO NOMOD51 INCDIR(C:/SiliconLabs/SimplicityStudio/v5/EFM8/developer/sdks/8051/v4.2.5//
+                      Device/shared/si8051Base;C:/SiliconLabs/SimplicityStudio/v5/EFM8/developer/sdks/8051/v4.2.5//Devic
+                      e/EFM8BB1/inc) PRINT(.\src\ESD_LAB1.lst) COND SYMBOLS PAGEWIDTH(120) PAGELENGTH(65) OBJECT(.\src\ESD_LAB1.OBJ) 
+
+LOC    OBJ             LINE     SOURCE
+
+000000                    1     org 0000h
+                          2     
+                          3     
+000000 752007             4     mov 0x20,#0x07 ;x=0x07
+000003 752203             5     mov 0x22,#0x03 ;y=0x03
+                          6     
+                          7     ; Initialize variables
+000006 E520               8     MOV A,  0x20       ; IRAM location 0x20 = X
+000008 A821               9     MOV R0, 0x21       ; IRAM location 0x21 = X*8
+00000A 8522F0            10     MOV B,  0x22        ; IRAM location 0x22 = Y // Assign to B
+00000D A922              11     MOV R1, 0x22       ; IRAM location 0x22 place in R1 (denominator)
+00000F AA23              12     MOV R2, 0x23       ; IRAM location 0x23 = Z (quotient)
+000011 AB24              13     MOV R3, 0x24       ; IRAM location 0x24 = remainder
+                         14     ; IRAM location 0x30 = error code
+                         15     
+                         16     
+000013 C3                17     CLR C;
+                         18     ; Check for divisor of 0
+                         19     ; Store X in IRAM location 0x20
+000014 E522              20     MOV A, 0x22
+000016 B40006            21     CJNE A, #0, NO_ERROR    ; jump to NO_ERROR if B != 0
+000019 7401              22     MOV A, #0x01        ; write error code 0x01 to IRAM location 0x30
+00001B F530              23     MOV 0x30, A
+00001D 802B              24     JMP ENDLOOP         ; jump to ENDLOOP
+00001F                   25     NO_ERROR:
+                         26     
+                         27     
+00001F C3                28     CLR C;
+                         29     ; Store X value in Acc through IRAM location 0x20
+000020 E520              30     MOV A,  0x20       ; A = 7
+                         31     
+                         32     ; Multiply X by 8 by adding 2 three times
+000022 F8                33     MOV R0, A               ; value of element at address 0x21 = A
+000023 7400              34     MOV A, #0x00
+000025 28                35     ADD A, R0               ;
+000026 28                36     ADD A, R0               ;
+000027 28                37     ADD A, R0               ;
+000028 28                38     ADD A, R0               ;
+000029 28                39     ADD A, R0               ;
+00002A 28                40     ADD A, R0               ;
+00002B 28                41     ADD A, R0               ;
+00002C 28                42     ADD A, R0               ;
+                         43     
+                         44     
+                         45     ; Check for overflow
+00002D 5006              46     JNC NO_OVERFLOW     ; jump to NO_OVERFLOW if no overflow
+00002F 7402              47     MOV A, #0x02        ; write error code 0x02 to IRAM location 0x30
+000031 F530              48     MOV 0x30, A
+000033 8015              49     JMP ENDLOOP         ; jump to ENDLOOP
+000035                   50     NO_OVERFLOW:
+                         51     
+AX51 MACRO ASSEMBLER  ESD_LAB1                                                              01/26/23 23:51:49 PAGE     2
+
+                         52     
+                         53     ; Store X*8 in IRAM location 0x21
+000035 F521              54     MOV 0x21, A
+                         55     
+                         56     ; Perform division
+000037 7A00              57     MOV R2, #0x00       ; initialize quotient to 0
+000039 E521              58     MOV A, 0x21         ; copy X*8 to A
+00003B                   59     LOOP:
+00003B FB                60     MOV R3,A                        ; remainder value
+00003C 99                61     SUBB A, R1          ; subtract Y from A
+00003D 4003              62     JC div_end
+00003F 0A                63     INC R2              ; increment quotient
+000040 50F9              64     JNC LOOP            ; repeat until A < Y
+                         65     
+                         66     ; One extra operation is done for exit condition from loop so R2 should be decremented b
+                               y 1
+000042                   67     div_end:
+                         68     ; Store quotient in IRAM location 0x23
+000042 8A23              69     MOV 0x23, R2
+                         70     
+                         71     ; Store remainder in IRAM location 0x24
+000044 8B24              72     MOV 0x24, R3
+                         73     
+                         74     ; Write error code 0x00 to IRAM location 0x30
+000046 7400              75     MOV A, #0x00
+000048 F530              76     MOV 0x30, A
+                         77     
+                         78     ; Jump to end of program
+00004A                   79     ENDLOOP:
+00004A 80FE              80     JMP ENDLOOP
+                         81     
+                         82     END
+                         83     
+                         84     
+                         85     
+AX51 MACRO ASSEMBLER  ESD_LAB1                                                              01/26/23 23:51:49 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                         T Y P E  V A L U E     ATTRIBUTES
+
+B. . . . . . . . . . . . . . .  D  ADDR  00F0H     A   
+DIV_END. . . . . . . . . . . .  C  ADDR  0042H     R   SEG=?CO?ESD_LAB1?0
+ENDLOOP. . . . . . . . . . . .  C  ADDR  004AH     R   SEG=?CO?ESD_LAB1?0
+LOOP . . . . . . . . . . . . .  C  ADDR  003BH     R   SEG=?CO?ESD_LAB1?0
+NO_ERROR . . . . . . . . . . .  C  ADDR  001FH     R   SEG=?CO?ESD_LAB1?0
+NO_OVERFLOW. . . . . . . . . .  C  ADDR  0035H     R   SEG=?CO?ESD_LAB1?0
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S).
